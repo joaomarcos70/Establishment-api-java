@@ -20,7 +20,7 @@ public class Vehicles implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeVehicle type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="Establishment_id")
     private Establishment establishment;
 
@@ -78,5 +78,17 @@ public class Vehicles implements Serializable {
 
     public void setEstablishment(Establishment establishment) {
         this.establishment = establishment;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicles{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", plate='" + plate + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

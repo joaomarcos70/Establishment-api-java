@@ -17,7 +17,7 @@ public class Establishment implements Serializable {
     private Integer motoVacancy;
     private Integer carVacancy;
 
-    @OneToMany(mappedBy = "establishment")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "establishment")
     private List<Vehicles> vehicles;
 
     public long getId() {
@@ -74,5 +74,17 @@ public class Establishment implements Serializable {
 
     public void setVehicles(List<Vehicles> vehicles) {
         this.vehicles = vehicles;
+    }
+
+    @Override
+    public String toString() {
+        return "Establishment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", motoVacancy=" + motoVacancy +
+                ", carVacancy=" + carVacancy +
+                '}';
     }
 }
