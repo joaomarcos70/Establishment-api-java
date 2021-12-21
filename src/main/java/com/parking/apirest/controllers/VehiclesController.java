@@ -52,8 +52,10 @@ public class VehiclesController {
             TypeVehicle type = body.getType();
             if (type == TypeVehicle.CAR) {
                 establishment.setCarVacancy(establishment.getCarVacancy() - 1);
+                establishmentRepository.save(establishment);
             } else {
                 establishment.setMotoVacancy(establishment.getMotoVacancy() - 1);
+                establishmentRepository.save(establishment);
             }
             vehicle.setEstablishment(establishment);
         }
