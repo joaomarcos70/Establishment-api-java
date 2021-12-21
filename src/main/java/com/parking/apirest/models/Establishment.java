@@ -2,6 +2,7 @@ package com.parking.apirest.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_ESTABLISHMENT")
@@ -15,6 +16,9 @@ public class Establishment implements Serializable {
     private String telephoneNumber;
     private Integer motoVacancy;
     private Integer carVacancy;
+
+    @OneToMany(mappedBy = "establishment")
+    private List<Vehicles> vehicles;
 
     public long getId() {
         return id;
@@ -62,5 +66,13 @@ public class Establishment implements Serializable {
 
     public void setCarVacancy(Integer carVacancy) {
         this.carVacancy = carVacancy;
+    }
+
+    public List<Vehicles> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<Vehicles> vehicles) {
+        this.vehicles = vehicles;
     }
 }
