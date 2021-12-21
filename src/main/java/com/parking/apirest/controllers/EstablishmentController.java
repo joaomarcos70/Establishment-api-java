@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -22,7 +23,7 @@ public class EstablishmentController {
     }
 
     @GetMapping("/establishment/{id}")
-    public Establishment getById(@PathVariable(value="id") long id){
+    public Optional<Establishment> getById(@PathVariable(value="id") long id){
         return establishmentRepository.findById(id);
     }
 
